@@ -1,7 +1,7 @@
 ﻿using DiGi.Analytical.Building.Interfaces;
 using DiGi.Geometry.Spatial.Classes;
 using DiGi.Rhino.Core.Classes;
-using DiGi.Rhino.Geometry.Classes;
+using DiGi.Rhino.Geometry.Spatial.Classes;
 using Grasshopper.Kernel.Types;
 
 namespace DiGi.Analytical.Rhino

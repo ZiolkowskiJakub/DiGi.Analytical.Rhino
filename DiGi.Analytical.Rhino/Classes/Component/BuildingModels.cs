@@ -3,7 +3,7 @@ using DiGi.Core.Constans;
 using DiGi.Geometry.Spatial.Classes;
 using DiGi.Rhino.Core.Classes;
 using DiGi.Rhino.Core.Enums;
-using DiGi.Rhino.Geometry.Classes;
+using DiGi.Rhino.Geometry.Spatial.Classes;
 using Grasshopper.Kernel;
 using System;
 using System.Collections.Generic;
@@ -86,7 +86,7 @@ namespace DiGi.Analytical.Building.Rhino.Classes
             }
 
             index = Params.IndexOfInputParam("Point");
-            Point3D point3D = null;
+            DiGi.Geometry.Spatial.Classes.Point3D point3D = null;
             if (index == -1 || !dataAccess.GetData(index, ref point3D) || point3D == null)
             {
                 AddRuntimeMessage(GH_RuntimeMessageLevel.Error, "Invalid data");
