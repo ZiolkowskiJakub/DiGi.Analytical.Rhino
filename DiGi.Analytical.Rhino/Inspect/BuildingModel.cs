@@ -9,7 +9,7 @@ namespace DiGi.Analytical.Rhino
     public static partial class Inspect
     {
         [Inspect("Components", "Components", "BuildingModel Components")]
-        public static IEnumerable Components(this Building.Classes.BuildingModel buildingModel)
+        public static IEnumerable? Components(this Building.Classes.BuildingModel buildingModel)
         {
             if (buildingModel == null)
             {
@@ -20,7 +20,7 @@ namespace DiGi.Analytical.Rhino
         }
 
         [Inspect("Guid", "Guid", "Guid")]
-        public static GH_Guid Guid(this Building.Classes.BuildingModel buildingModel)
+        public static GH_Guid? Guid(this Building.Classes.BuildingModel? buildingModel)
         {
             if (buildingModel == null)
             {
@@ -31,7 +31,7 @@ namespace DiGi.Analytical.Rhino
         }
 
         [Inspect("Spaces", "Spaces", "BuildingModel Spaces")]
-        public static IEnumerable Spaces(this Building.Classes.BuildingModel buildingModel)
+        public static IEnumerable? Spaces(this Building.Classes.BuildingModel? buildingModel)
         {
             if (buildingModel == null)
             {

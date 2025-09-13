@@ -11,7 +11,7 @@ namespace DiGi.Analytical.Building.Rhino.Classes
         {
         }
 
-        public GooRoof(Interfaces.IRoof roof)
+        public GooRoof(Interfaces.IRoof? roof)
         {
             Value = roof;
         }
@@ -25,7 +25,7 @@ namespace DiGi.Analytical.Building.Rhino.Classes
 
     public class GooRoofParam : GooPresistentParam<GooRoof, Interfaces.IRoof>
     {
-        public override Guid ComponentGuid => new Guid("7077831e-6d74-4fb1-8380-9519f0c15c1e");
+        public override Guid ComponentGuid => new ("7077831e-6d74-4fb1-8380-9519f0c15c1e");
 
         //protected override System.Drawing.Bitmap Icon => Resources.DiGi_Small;
 

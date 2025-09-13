@@ -11,7 +11,7 @@ namespace DiGi.Analytical.Building.Rhino.Classes
         {
         }
 
-        public GooComponent(Interfaces.IComponent component)
+        public GooComponent(Interfaces.IComponent? component)
         {
             Value = component;
         }
@@ -25,7 +25,7 @@ namespace DiGi.Analytical.Building.Rhino.Classes
 
     public class GooComponentParam : GooPresistentParam<GooComponent, Interfaces.IComponent>
     {
-        public override Guid ComponentGuid => new Guid("107cc60e-c658-4a1e-b855-54620058a9d1");
+        public override Guid ComponentGuid => new ("107cc60e-c658-4a1e-b855-54620058a9d1");
 
         //protected override System.Drawing.Bitmap Icon => Resources.DiGi_Small;
 

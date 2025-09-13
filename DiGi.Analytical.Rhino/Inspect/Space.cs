@@ -9,24 +9,18 @@ namespace DiGi.Analytical.Rhino
     public static partial class Inspect
     {
         [Inspect("Geometry", "Geometry", "Geometry")]
-        public static Point3D Geometry(this ISpace space)
+        public static Point3D? Geometry(this ISpace? space)
         {
             if (space == null)
             {
                 return null;
             }
 
-            Space space_Temp = space as Space;
-            if (space_Temp == null)
-            {
-                throw new System.NotImplementedException();
-            }
-
-            return space_Temp.Geometry;
+            return space is not Space space_Temp ? throw new System.NotImplementedException() : space_Temp.Geometry;
         }
 
         [Inspect("Guid", "Guid", "Guid")]
-        public static GH_Guid Guid(this ISpace space)
+        public static GH_Guid? Guid(this ISpace? space)
         {
             if (space == null)
             {
@@ -37,20 +31,14 @@ namespace DiGi.Analytical.Rhino
         }
 
         [Inspect("Name", "Name", "Name")]
-        public static GH_String Name(this ISpace space)
+        public static GH_String? Name(this ISpace? space)
         {
             if (space == null)
             {
                 return null;
             }
 
-            Space space_Temp = space as Space;
-            if (space_Temp == null)
-            {
-                throw new System.NotImplementedException();
-            }
-
-            return new GH_String(space_Temp.Name);
+            return space is not Space space_Temp ? throw new System.NotImplementedException() : new GH_String(space_Temp.Name);
         }
     }
 }

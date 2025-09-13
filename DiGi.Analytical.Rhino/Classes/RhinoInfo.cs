@@ -9,12 +9,12 @@ namespace DiGi.Analytical.Building.Rhino.Classes
         public override string Name => "DiGi.Analytical.Building.Rhino";
 
         //Return a 24x24 pixel bitmap to represent this GHA library.
-        public override Bitmap Icon => null;
+        public override Bitmap? Icon => null;
 
         //Return a short string describing the purpose of this GHA library.
         public override string Description => "";
 
-        public override Guid Id => new Guid("886667e5-8cdc-4cd7-9718-de3ec0d324e0");
+        public override Guid Id => new ("886667e5-8cdc-4cd7-9718-de3ec0d324e0");
 
         //Return a string identifying you or your company.
         public override string AuthorName => "Jakub Ziolkowski";

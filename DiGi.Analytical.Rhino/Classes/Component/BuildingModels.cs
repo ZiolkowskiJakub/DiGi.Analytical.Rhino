@@ -15,7 +15,7 @@ namespace DiGi.Analytical.Building.Rhino.Classes
         /// <summary>
         /// Gets the unique ID for this component. Do not change this ID after release.
         /// </summary>
-        public override Guid ComponentGuid => new Guid("63955d49-39aa-49e6-bfc6-76697cd89ca1");
+        public override Guid ComponentGuid => new ("63955d49-39aa-49e6-bfc6-76697cd89ca1");
 
         /// <summary>
         /// Provides an Icon for the component.
@@ -41,16 +41,18 @@ namespace DiGi.Analytical.Building.Rhino.Classes
         {
             get
             {
-                List<Param> result = new List<Param>();
-                result.Add(new Param(new GooBuildingModelParam() { Name = "BuildingModels", NickName = "BuildingModels", Description = "Analytical BuildingModels", Access = GH_ParamAccess.list }, ParameterVisibility.Binding));
-                result.Add(new Param(new GooPoint3DParam() { Name = "Point", NickName = "Point", Description = "Point", Access = GH_ParamAccess.item }, ParameterVisibility.Binding));
-                result.Add(new Param(new Grasshopper.Kernel.Parameters.Param_Number() { Name = "Distance", NickName = "Distance", Description = "Distance from point", Access = GH_ParamAccess.item }, ParameterVisibility.Binding));
+                List<Param> result =
+                [
+                    new Param(new GooBuildingModelParam() { Name = "BuildingModels", NickName = "BuildingModels", Description = "Analytical BuildingModels", Access = GH_ParamAccess.list }, ParameterVisibility.Binding),
+                    new Param(new GooPoint3DParam() { Name = "Point", NickName = "Point", Description = "Point", Access = GH_ParamAccess.item }, ParameterVisibility.Binding),
+                    new Param(new Grasshopper.Kernel.Parameters.Param_Number() { Name = "Distance", NickName = "Distance", Description = "Distance from point", Access = GH_ParamAccess.item }, ParameterVisibility.Binding),
+                ];
 
-                Grasshopper.Kernel.Parameters.Param_Number param_Number = new Grasshopper.Kernel.Parameters.Param_Number() { Name = "Tolerance", NickName = "Tolerance", Description = "Tolerance", Access = GH_ParamAccess.item, Optional = true };
+                Grasshopper.Kernel.Parameters.Param_Number param_Number = new() { Name = "Tolerance", NickName = "Tolerance", Description = "Tolerance", Access = GH_ParamAccess.item, Optional = true };
                 param_Number.SetPersistentData(Tolerance.Distance);
                 result.Add(new Param(param_Number, ParameterVisibility.Voluntary));
                 
-                return result.ToArray();
+                return [.. result];
             }
         }
 
@@ -61,9 +63,11 @@ namespace DiGi.Analytical.Building.Rhino.Classes
         {
             get
             {
-                List<Param> result = new List<Param>();
-                result.Add(new Param(new GooBuildingModelParam() { Name = "BuildingModels", NickName = "BuildingModels", Description = "Analytical BuildingModels", Access = GH_ParamAccess.list }, ParameterVisibility.Binding)); 
-                return result.ToArray();
+                List<Param> result =
+                [
+                    new Param(new GooBuildingModelParam() { Name = "BuildingModels", NickName = "BuildingModels", Description = "Analytical BuildingModels", Access = GH_ParamAccess.list }, ParameterVisibility.Binding),
+                ];
+                return [.. result];
             }
         }
 
@@ -78,7 +82,7 @@ namespace DiGi.Analytical.Building.Rhino.Classes
             int index;
 
             index = Params.IndexOfInputParam("BuildingModels");
-            List<BuildingModel> buildingModels_In = new List<BuildingModel>();
+            List<BuildingModel> buildingModels_In = [];
             if (index == -1 || !dataAccess.GetDataList(index, buildingModels_In) || buildingModels_In == null)
             {
                 AddRuntimeMessage(GH_RuntimeMessageLevel.Error, "Invalid data");
@@ -86,7 +90,7 @@ namespace DiGi.Analytical.Building.Rhino.Classes
             }
 
             index = Params.IndexOfInputParam("Point");
-            DiGi.Geometry.Spatial.Classes.Point3D point3D = null;
+            DiGi.Geometry.Spatial.Classes.Point3D? point3D = null;
             if (index == -1 || !dataAccess.GetData(index, ref point3D) || point3D == null)
             {
                 AddRuntimeMessage(GH_RuntimeMessageLevel.Error, "Invalid data");
@@ -108,9 +112,9 @@ namespace DiGi.Analytical.Building.Rhino.Classes
                 tolerance = Tolerance.Distance;
             }
 
-            Sphere sphere = new Sphere(point3D, distance);
+            Sphere sphere = new (point3D, distance);
 
-            List<BuildingModel> buildingModels_Out = new List<BuildingModel>();
+            List<BuildingModel> buildingModels_Out = [];
             foreach (BuildingModel buildingModel_In in buildingModels_In)
             {
                 if (buildingModels_In != null && buildingModel_In.Inside(sphere, tolerance))

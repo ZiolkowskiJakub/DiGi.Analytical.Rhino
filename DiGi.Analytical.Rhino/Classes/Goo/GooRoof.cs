@@ -11,7 +11,7 @@ namespace DiGi.Analytical.Building.Rhino.Classes
         {
         }
 
-        public GooFloor(Interfaces.IFloor floor)
+        public GooFloor(Interfaces.IFloor? floor)
         {
             Value = floor;
         }
@@ -25,7 +25,7 @@ namespace DiGi.Analytical.Building.Rhino.Classes
 
     public class GooFloorParam : GooPresistentParam<GooFloor, Interfaces.IFloor>
     {
-        public override Guid ComponentGuid => new Guid("63c3a8b9-9dcd-456a-ae79-0e325d31972a");
+        public override Guid ComponentGuid => new ("63c3a8b9-9dcd-456a-ae79-0e325d31972a");
 
         //protected override System.Drawing.Bitmap Icon => Resources.DiGi_Small;
 

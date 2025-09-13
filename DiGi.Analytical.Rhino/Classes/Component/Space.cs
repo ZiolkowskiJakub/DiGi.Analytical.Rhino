@@ -12,7 +12,7 @@ namespace DiGi.Analytical.Building.Rhino.Classes
         /// <summary>
         /// Gets the unique ID for this component. Do not change this ID after release.
         /// </summary>
-        public override Guid ComponentGuid => new Guid("74f30bc7-8848-4fcb-96f9-8bafccdfb5ae");
+        public override Guid ComponentGuid => new ("74f30bc7-8848-4fcb-96f9-8bafccdfb5ae");
 
         /// <summary>
         /// Provides an Icon for the component.
@@ -38,11 +38,13 @@ namespace DiGi.Analytical.Building.Rhino.Classes
         {
             get
             {
-                List<Param> result = new List<Param>();
-                result.Add(new Param(new Grasshopper.Kernel.Parameters.Param_String() { Name = "Name", NickName = "Name", Description = "Space name", Access = GH_ParamAccess.item }, ParameterVisibility.Binding));
-                result.Add(new Param(new GooPoint3DParam() { Name = "Point", NickName = "Point", Description = "Point", Access = GH_ParamAccess.item }, ParameterVisibility.Binding));
+                List<Param> result =
+                [
+                    new Param(new Grasshopper.Kernel.Parameters.Param_String() { Name = "Name", NickName = "Name", Description = "Space name", Access = GH_ParamAccess.item }, ParameterVisibility.Binding),
+                    new Param(new GooPoint3DParam() { Name = "Point", NickName = "Point", Description = "Point", Access = GH_ParamAccess.item }, ParameterVisibility.Binding),
+                ];
                 
-                return result.ToArray();
+                return [.. result];
             }
         }
 
@@ -53,9 +55,11 @@ namespace DiGi.Analytical.Building.Rhino.Classes
         {
             get
             {
-                List<Param> result = new List<Param>();
-                result.Add(new Param(new GooSpaceParam() { Name = "Space", NickName = "Space", Description = "Analytical Space", Access = GH_ParamAccess.item }, ParameterVisibility.Binding)); 
-                return result.ToArray();
+                List<Param> result =
+                [
+                    new Param(new GooSpaceParam() { Name = "Space", NickName = "Space", Description = "Analytical Space", Access = GH_ParamAccess.item }, ParameterVisibility.Binding),
+                ];
+                return [.. result];
             }
         }
 
@@ -70,7 +74,7 @@ namespace DiGi.Analytical.Building.Rhino.Classes
             int index;
 
             index = Params.IndexOfInputParam("Name");
-            string name = null;
+            string? name = null;
             if (index == -1 || !dataAccess.GetData(index, ref name))
             {
                 AddRuntimeMessage(GH_RuntimeMessageLevel.Error, "Invalid data");
@@ -78,14 +82,14 @@ namespace DiGi.Analytical.Building.Rhino.Classes
             }
 
             index = Params.IndexOfInputParam("Point");
-            Geometry.Spatial.Classes.Point3D point3D = null;
+            Geometry.Spatial.Classes.Point3D? point3D = null;
             if (index == -1 || !dataAccess.GetData(index, ref point3D) || point3D == null)
             {
                 AddRuntimeMessage(GH_RuntimeMessageLevel.Error, "Invalid data");
                 return;
             }
 
-            Building.Classes.Space space = new Building.Classes.Space(point3D, name);
+            Building.Classes.Space space = new(point3D, name);
 
             index = Params.IndexOfOutputParam("Space");
             if (index != -1)

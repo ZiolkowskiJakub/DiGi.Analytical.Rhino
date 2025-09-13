@@ -11,7 +11,7 @@ namespace DiGi.Analytical.Building.Rhino.Classes
         {
         }
 
-        public GooWall(Interfaces.IWall wall)
+        public GooWall(Interfaces.IWall? wall)
         {
             Value = wall;
         }
@@ -25,7 +25,7 @@ namespace DiGi.Analytical.Building.Rhino.Classes
 
     public class GooWallParam : GooPresistentParam<GooWall, Interfaces.IWall>
     {
-        public override Guid ComponentGuid => new Guid("9badab6e-af7f-4cf6-a022-f4f7aabc1b57");
+        public override Guid ComponentGuid => new ("9badab6e-af7f-4cf6-a022-f4f7aabc1b57");
 
         //protected override System.Drawing.Bitmap Icon => Resources.DiGi_Small;
 

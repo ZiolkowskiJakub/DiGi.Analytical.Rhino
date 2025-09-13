@@ -1,4 +1,5 @@
 ﻿using DiGi.Analytical.Building.Interfaces;
+using DiGi.Core;
 using DiGi.Geometry.Core.Interfaces;
 using DiGi.Geometry.Spatial.Interfaces;
 using DiGi.Rhino.Geometry.Core.Classes;
@@ -14,16 +15,16 @@ namespace DiGi.Analytical.Building.Rhino.Classes
         {
         }
 
-        public GooBuildingModel(Building.Classes.BuildingModel buildingModel)
+        public GooBuildingModel(Building.Classes.BuildingModel? buildingModel)
         {
             Value = buildingModel;
         }
 
-        public override IGeometry[] Geometries
+        public override IGeometry[]? Geometries
         {
             get
             {
-                return Value?.GetComponents<IComponent>().ConvertAll(x => x.Geometry3D<IPlanar>()).ToArray();
+                return Value?.GetComponents<IComponent>()?.ConvertAll(x => x.Geometry3D<IPlanar>())?.FilterNulls()?.ToArray();
             }
         }
 
@@ -36,7 +37,7 @@ namespace DiGi.Analytical.Building.Rhino.Classes
 
     public class GooBuildingModelParam : GooBakeAwareSerializableParam<GooBuildingModel, Building.Classes.BuildingModel>
     {
-        public override Guid ComponentGuid => new Guid("1ab45874-ffa1-42ed-af8d-9b2702fd3294");
+        public override Guid ComponentGuid => new ("1ab45874-ffa1-42ed-af8d-9b2702fd3294");
 
         //protected override System.Drawing.Bitmap Icon => Resources.DiGi_Small;
     }
