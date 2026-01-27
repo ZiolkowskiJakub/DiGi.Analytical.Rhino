@@ -24,7 +24,7 @@
   <ItemGroup>
     <PackageReference Include="Grasshopper" Version="8.19.25132.1001" IncludeAssets="compile;build" />
 	  <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
-    <PackageReference Include="System.Text.Json" Version="10.0.1" />
+    <PackageReference Include="System.Text.Json" Version="10.0.2" />
   </ItemGroup>
 
   <ItemGroup>
