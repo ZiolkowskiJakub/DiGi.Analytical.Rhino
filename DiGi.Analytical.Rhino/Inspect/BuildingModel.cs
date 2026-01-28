@@ -42,4 +42,3 @@ namespace DiGi.Analytical.Rhino
         }
     }
 }
-

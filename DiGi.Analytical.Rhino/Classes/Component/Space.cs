@@ -12,7 +12,7 @@ namespace DiGi.Analytical.Building.Rhino.Classes
         /// <summary>
         /// Gets the unique ID for this component. Do not change this ID after release.
         /// </summary>
-        public override Guid ComponentGuid => new ("74f30bc7-8848-4fcb-96f9-8bafccdfb5ae");
+        public override Guid ComponentGuid => new("74f30bc7-8848-4fcb-96f9-8bafccdfb5ae");
 
         /// <summary>
         /// Provides an Icon for the component.
@@ -43,7 +43,7 @@ namespace DiGi.Analytical.Building.Rhino.Classes
                     new Param(new Grasshopper.Kernel.Parameters.Param_String() { Name = "Name", NickName = "Name", Description = "Space name", Access = GH_ParamAccess.item }, ParameterVisibility.Binding),
                     new Param(new GooPoint3DParam() { Name = "Point", NickName = "Point", Description = "Point", Access = GH_ParamAccess.item }, ParameterVisibility.Binding),
                 ];
-                
+
                 return [.. result];
             }
         }

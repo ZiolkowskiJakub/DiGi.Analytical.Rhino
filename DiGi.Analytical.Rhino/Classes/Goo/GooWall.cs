@@ -20,12 +20,11 @@ namespace DiGi.Analytical.Building.Rhino.Classes
         {
             return new GooWall(Value);
         }
-
     }
 
     public class GooWallParam : GooPresistentParam<GooWall, Interfaces.IWall>
     {
-        public override Guid ComponentGuid => new ("9badab6e-af7f-4cf6-a022-f4f7aabc1b57");
+        public override Guid ComponentGuid => new("9badab6e-af7f-4cf6-a022-f4f7aabc1b57");
 
         //protected override System.Drawing.Bitmap Icon => Resources.DiGi_Small;
 

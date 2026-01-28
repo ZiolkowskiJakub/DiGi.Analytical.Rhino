@@ -32,12 +32,11 @@ namespace DiGi.Analytical.Building.Rhino.Classes
         {
             return new GooBuildingModel(Value);
         }
-
     }
 
     public class GooBuildingModelParam : GooBakeAwareSerializableParam<GooBuildingModel, Building.Classes.BuildingModel>
     {
-        public override Guid ComponentGuid => new ("1ab45874-ffa1-42ed-af8d-9b2702fd3294");
+        public override Guid ComponentGuid => new("1ab45874-ffa1-42ed-af8d-9b2702fd3294");
 
         //protected override System.Drawing.Bitmap Icon => Resources.DiGi_Small;
     }

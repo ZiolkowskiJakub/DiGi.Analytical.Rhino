@@ -15,7 +15,7 @@ namespace DiGi.Analytical.Building.Rhino.Classes
         /// <summary>
         /// Gets the unique ID for this component. Do not change this ID after release.
         /// </summary>
-        public override Guid ComponentGuid => new ("63955d49-39aa-49e6-bfc6-76697cd89ca1");
+        public override Guid ComponentGuid => new("63955d49-39aa-49e6-bfc6-76697cd89ca1");
 
         /// <summary>
         /// Provides an Icon for the component.
@@ -51,7 +51,7 @@ namespace DiGi.Analytical.Building.Rhino.Classes
                 Grasshopper.Kernel.Parameters.Param_Number param_Number = new() { Name = "Tolerance", NickName = "Tolerance", Description = "Tolerance", Access = GH_ParamAccess.item, Optional = true };
                 param_Number.SetPersistentData(Tolerance.Distance);
                 result.Add(new Param(param_Number, ParameterVisibility.Voluntary));
-                
+
                 return [.. result];
             }
         }
@@ -112,7 +112,7 @@ namespace DiGi.Analytical.Building.Rhino.Classes
                 tolerance = Tolerance.Distance;
             }
 
-            Sphere sphere = new (point3D, distance);
+            Sphere sphere = new(point3D, distance);
 
             List<BuildingModel> buildingModels_Out = [];
             foreach (BuildingModel buildingModel_In in buildingModels_In)
