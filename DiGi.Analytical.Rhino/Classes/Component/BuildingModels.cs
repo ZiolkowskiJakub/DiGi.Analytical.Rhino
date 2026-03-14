@@ -1,5 +1,5 @@
 ﻿using DiGi.Analytical.Building.Classes;
-using DiGi.Core.Constants;
+using DiGi.Core.Constans;
 using DiGi.Geometry.Spatial.Classes;
 using DiGi.Rhino.Core.Classes;
 using DiGi.Rhino.Core.Enums;
