@@ -1,4 +1,4 @@
-﻿using DiGi.Analytical.Building.Classes;
+using DiGi.Analytical.Building.Classes;
 using DiGi.Core.Constants;
 using DiGi.Geometry.Spatial.Classes;
 using DiGi.Rhino.Core.Classes;
@@ -10,22 +10,23 @@ using System.Collections.Generic;
 
 namespace DiGi.Analytical.Building.Rhino.Classes
 {
+    /// <summary>
+    /// Provides a Grasshopper component that filters building models based on their spatial proximity to a given point within a specified distance and tolerance.
+    /// </summary>
     public class BuildingModels : VariableParameterComponent
     {
         /// <summary>
-        /// Gets the unique ID for this component. Do not change this ID after release.
+        /// Gets the unique identifier for this component. This ID must remain constant after release to ensure document compatibility.
         /// </summary>
         public override Guid ComponentGuid => new("63955d49-39aa-49e6-bfc6-76697cd89ca1");
 
         /// <summary>
-        /// Provides an Icon for the component.
+        /// Gets the exposure level of the component, which determines its execution priority and visibility in the Grasshopper canvas.
         /// </summary>
-        //protected override System.Drawing.Bitmap Icon => Resources.DiGi_Small;
-
         public override GH_Exposure Exposure => GH_Exposure.primary;
 
         /// <summary>
-        /// Initializes a new instance of the SAM_point3D class.
+        /// Initializes a new instance of the <see cref="BuildingModels"/> class with specified name, description, and category.
         /// </summary>
         public BuildingModels()
           : base("Analytical.BuildingModels", "Analytical.BuildingModels",
@@ -35,7 +36,7 @@ namespace DiGi.Analytical.Building.Rhino.Classes
         }
 
         /// <summary>
-        /// Registers all the input parameters for this component.
+        /// Registers and configures the input parameters for the component, including building models, a reference point, distance, and an optional tolerance.
         /// </summary>
         protected override Param[] Inputs
         {
@@ -57,7 +58,7 @@ namespace DiGi.Analytical.Building.Rhino.Classes
         }
 
         /// <summary>
-        /// Registers all the output parameters for this component.
+        /// Registers and configures the output parameters for the component, returning the filtered list of building models.
         /// </summary>
         protected override Param[] Outputs
         {
@@ -72,11 +73,9 @@ namespace DiGi.Analytical.Building.Rhino.Classes
         }
 
         /// <summary>
-        /// This is the method that actually does the work.
+        /// Performs the main computation of the component: retrieves input data, filters building models that are inside a sphere defined by the point and distance, and sets the output list.
         /// </summary>
-        /// <param name="dataAccess">
-        /// The DA object is used to retrieve from inputs and store in outputs.
-        /// </param>
+        /// <param name="dataAccess">The <see cref="IGH_DataAccess"/> object used to retrieve values from inputs and store results in outputs.</param>
         protected override void SolveInstance(IGH_DataAccess dataAccess)
         {
             int index;

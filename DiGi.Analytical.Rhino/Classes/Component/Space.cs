@@ -1,4 +1,4 @@
-﻿using DiGi.Rhino.Core.Classes;
+using DiGi.Rhino.Core.Classes;
 using DiGi.Rhino.Core.Enums;
 using DiGi.Rhino.Geometry.Spatial.Classes;
 using Grasshopper.Kernel;
@@ -7,6 +7,9 @@ using System.Collections.Generic;
 
 namespace DiGi.Analytical.Building.Rhino.Classes
 {
+    /// <summary>
+    /// Represents a Grasshopper component that creates an analytical space based on a name and a spatial point.
+    /// </summary>
     public class Space : VariableParameterComponent
     {
         /// <summary>
@@ -15,14 +18,12 @@ namespace DiGi.Analytical.Building.Rhino.Classes
         public override Guid ComponentGuid => new("74f30bc7-8848-4fcb-96f9-8bafccdfb5ae");
 
         /// <summary>
-        /// Provides an Icon for the component.
+        /// Gets the exposure level of the component, determining how it handles data flow.
         /// </summary>
-        //protected override System.Drawing.Bitmap Icon => Resources.DiGi_Small;
-
         public override GH_Exposure Exposure => GH_Exposure.primary;
 
         /// <summary>
-        /// Initializes a new instance of the SAM_point3D class.
+        /// Initializes a new instance of the <see cref="Space"/> class.
         /// </summary>
         public Space()
           : base("Analytical.Space", "Analytical.Space",
@@ -32,7 +33,7 @@ namespace DiGi.Analytical.Building.Rhino.Classes
         }
 
         /// <summary>
-        /// Registers all the input parameters for this component.
+        /// Registers all the input parameters for this component, including Name and Point.
         /// </summary>
         protected override Param[] Inputs
         {
@@ -49,7 +50,7 @@ namespace DiGi.Analytical.Building.Rhino.Classes
         }
 
         /// <summary>
-        /// Registers all the output parameters for this component.
+        /// Registers all the output parameters for this component, providing the resulting analytical space.
         /// </summary>
         protected override Param[] Outputs
         {
@@ -64,11 +65,9 @@ namespace DiGi.Analytical.Building.Rhino.Classes
         }
 
         /// <summary>
-        /// This is the method that actually does the work.
+        /// This is the method that actually does the work. It retrieves input data, instantiates a building space, and sets the output.
         /// </summary>
-        /// <param name="dataAccess">
-        /// The DA object is used to retrieve from inputs and store in outputs.
-        /// </param>
+        /// <param name="dataAccess">The DA object used to retrieve from inputs and store in outputs.</param>
         protected override void SolveInstance(IGH_DataAccess dataAccess)
         {
             int index;

@@ -8,6 +8,12 @@ namespace DiGi.Analytical.Rhino
 {
     public static partial class Inspect
     {
+        /// <summary>
+        /// Retrieves all components associated with the specified building model, 
+        /// wrapped as a collection of <see cref="GooComponent"/>.
+        /// </summary>
+        /// <param name="buildingModel">The building model instance to inspect.</param>
+        /// <returns>An enumerable collection of <see cref="GooComponent"/> objects, or <c>null</c> if the <paramref name="buildingModel"/> is null.</returns>
         [Inspect("Components", "Components", "BuildingModel Components")]
         public static IEnumerable? Components(this Building.Classes.BuildingModel buildingModel)
         {
@@ -19,6 +25,11 @@ namespace DiGi.Analytical.Rhino
             return buildingModel.GetComponents<IComponent>()?.ConvertAll(x => new GooComponent(x));
         }
 
+        /// <summary>
+        /// Retrieves the unique identifier of the specified building model wrapped in a <see cref="GH_Guid"/>.
+        /// </summary>
+        /// <param name="buildingModel">The building model instance to inspect.</param>
+        /// <returns>A <see cref="GH_Guid"/> representing the model's identity, or <c>null</c> if the <paramref name="buildingModel"/> is null.</returns>
         [Inspect("Guid", "Guid", "Guid")]
         public static GH_Guid? Guid(this Building.Classes.BuildingModel? buildingModel)
         {
@@ -30,6 +41,12 @@ namespace DiGi.Analytical.Rhino
             return new GH_Guid(buildingModel.Guid);
         }
 
+        /// <summary>
+        /// Retrieves all spaces associated with the specified building model, 
+        /// wrapped as a collection of <see cref="GooSpace"/>.
+        /// </summary>
+        /// <param name="buildingModel">The building model instance to inspect.</param>
+        /// <returns>An enumerable collection of <see cref="GooSpace"/> objects, or <c>null</c> if the <paramref name="buildingModel"/> is null.</returns>
         [Inspect("Spaces", "Spaces", "BuildingModel Spaces")]
         public static IEnumerable? Spaces(this Building.Classes.BuildingModel? buildingModel)
         {
